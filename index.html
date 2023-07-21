@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Інтернет-магазин</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="categories">
+            <h2>Категорії</h2>
+            <ul class="categories__list">
+                <li onclick="showProducts('electronics')" id="electronics">Електроніка</li>
+                <li onclick="showProducts('clothing')" id="clothing">Одяг</li>
+                <li onclick="showProducts('books')" id="books">Книги</li>
+            </ul>
+            <button onclick="showMyOrdersSection()">Мої замовлення</button>
+        </div>
+    
+        <div id="products">
+            <h2>Товари</h2>
+            <ul id="product-list" class="products__list">
+                <!-- Тут буде відображатися список товарів -->
+            </ul>
+        </div>
+    
+        <div id="product-info">
+            <h2>Інформація про товар</h2>
+            <div id="product-details" class="products__details">
+                <!-- Тут буде відображатися інформація про обраний товар -->
+            </div>
+            <button id="buy-button" class="buy__button" onclick="openOrderForm()" style="display: none;">Купити</button>
+        </div>
+    </div>
+
+    <div id="order-info">
+        <div id="order-details" class="order__details">
+            <!-- Тут буде відображатися інформація про замовлення -->
+        </div>
+    </div>
+
+    
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderForm()">&times;</span>
+            <h2>Форма оформлення замовлення</h2>
+            <form id="order-form" onsubmit="submitOrder(event)">
+                <label for="name">ПІБ покупця:</label><br>
+                <input type="text" id="name" name="name" required><br>
+    
+                <label for="city">Місто:</label><br>
+                <select id="city" name="city" required>
+                    <option value="">Оберіть місто</option>
+                    <option value="Київ">Київ</option>
+                    <option value="Львів">Львів</option>
+                    <option value="Одеса">Одеса</option>
+                </select><br>
+    
+                <label for="delivery">Склад Нової пошти:</label><br>
+                <input type="text" id="delivery" name="delivery" required><br>
+    
+                <label for="payment">Спосіб оплати:</label><br>
+                <input type="radio" id="payment-cash" name="payment" value="Післяплата" required>
+                <label for="payment-cash">Післяплата</label>
+                <input type="radio" id="payment-card" name="payment" value="Оплата банківською карткою" required>
+                <label for="payment-card">Оплата банківською карткою</label><br>
+    
+                <label for="quantity">Кількість:</label><br>
+                <input type="number" id="quantity" name="quantity" min="1" required><br>
+    
+                <label for="comment">Коментар до замовлення:</label><br>
+                <textarea id="comment" name="comment"></textarea><br>
+    
+                <input type="submit" value="Підтвердити замовлення">
+            </form>
+            <div id="error-message" class="error-message"></div>
+        </div>
+
+        
+    </div>
+
+    <div id="my-orders" style="display: none;"> <!-- Розділ для відображення замовлень -->
+        <h2>Мої замовлення</h2>
+        <ul id="order-list" class="order__list">
+            <!-- Тут буде відображатися список замовлень користувача -->
+        </ul>
+        <div id="order-details" style="display: none;"> <!-- Розділ для деталей замовлення -->
+            <!-- Тут будуть відображатися деталі обраного замовлення -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
